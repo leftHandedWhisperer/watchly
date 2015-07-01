@@ -391,6 +391,7 @@ angular.module('watchly.controllers', ['watchly.services', 'ngFileUpload', 'ngCo
   });
 
 
+<<<<<<< HEAD
   $ionicModal.fromTemplateUrl('templates/signup.html', {
     scope: $scope,
     animation: 'slide-in-up',
@@ -419,13 +420,48 @@ angular.module('watchly.controllers', ['watchly.services', 'ngFileUpload', 'ngCo
       $scope.user = Auth.getUser();
       $scope.profileModal.show();
     } else {
+=======
+    $ionicModal.fromTemplateUrl('templates/welcome.html', {
+      scope: $scope,
+      animation: 'slide-in-up',
+    }).then(function(modal) {
+      $scope.welcomeModal = modal;       
+    });
+
+    $scope.profileActivate = function () { 
+      if(Auth.isAuthenticated()) {
+        $scope.user = Auth.getUser();
+        $scope.profileModal.show();   
+      }
+      else {
+        $scope.signInModal.show();
+      }
+    };
+
+    $scope.openWelcomeModal = function() {
+      $scope.welcomeModal.show();
+    };
+
+    $scope.closeWelcomeModal = function() {
+      $scope.welcomeModal.hide();
+    }
+
+    $scope.openSignInModal = function() {
+>>>>>>> popup welcome window
       $scope.signInModal.show();
     }
   };
 
+<<<<<<< HEAD
   $scope.openSignInModal = function() {
     $scope.signInModal.show();
   };
+=======
+
+    $scope.closeSignInModal = function() {
+      $scope.signInModal.hide();
+    };
+>>>>>>> popup welcome window
 
   $scope.closeSignInModal = function() {
     $scope.signInModal.hide();
@@ -490,6 +526,7 @@ angular.module('watchly.controllers', ['watchly.services', 'ngFileUpload', 'ngCo
       saveToPhotoAlbum: false
     };
 
+<<<<<<< HEAD
     $cordovaCamera.getPicture(options).then(function(imageData) {
       $scope.imgURI = "data:image/jpeg;base64," + imageData;
     }, function(err) {
@@ -499,6 +536,35 @@ angular.module('watchly.controllers', ['watchly.services', 'ngFileUpload', 'ngCo
   }
 
   // camera functions end
+=======
+    // LOAD THE WELCOME MODAL right when page is loaded... well plus 2s
+    setTimeout(function(){$scope.openWelcomeModal()}, 2000);
+    
+
+    // CAMERA FUNCTION BELOW HERE ---------
+
+    $scope.takePicture = function() {
+      var options = { 
+        quality : 75, 
+        destinationType : Camera.DestinationType.DATA_URL, 
+        sourceType : Camera.PictureSourceType.CAMERA, 
+        allowEdit : true,
+        encodingType: Camera.EncodingType.JPEG,
+        targetWidth: 300,
+        targetHeight: 300,
+        popoverOptions: CameraPopoverOptions,
+        saveToPhotoAlbum: false
+      };
+     
+      $cordovaCamera.getPicture(options).then(function(imageData) {
+        $scope.imgURI = "data:image/jpeg;base64," + imageData;
+      }, function(err) {
+        // An error occured. Show a message to the user
+      });
+    }
+
+    // camera functions end --------------------
+>>>>>>> popup welcome window
 
   $scope.isValidPhoneNumber = function(number) {
     return number ? number.match(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/) : false;
