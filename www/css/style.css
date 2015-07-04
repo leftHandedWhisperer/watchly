@@ -5,6 +5,12 @@
   height: 100%;
 }
 
+body {
+  background-image: url('http://www.grit.com/~/media/Images/GRT/Editorial/Articles/Magazine%20Articles/2010/01-01/Raising%20Goats%20for%20Fun%20and%20Profit/Grt-JF10-goats-kid-i.jpg');
+  background-repeat: none;
+  background-size: cover;
+}
+
 .scroll {
   height: 100%;
 }
